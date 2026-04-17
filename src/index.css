@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap');
+
+@font-face {
+  font-family: 'Grade';
+  src: url('/fonts/Grade.woff2') format('woff2'),
+       url('/fonts/Grade.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg:             #fafaf9;
+    --color-surface:        #ffffff;
+    --color-surface-alt:    #f5f5f4;
+    --color-border:         #e7e5e4;
+    --color-text:           #1c1917;
+    --color-text-secondary: #57534e;
+    --color-text-muted:     #a8a29e;
+    --color-accent:         #991b1b;
+    --color-accent-hover:   #b91c1c;
+    --color-accent-dark:    #7f1d1d;
+    --color-accent-subtle:  #fef2f2;
+    --accent-rgb:           153, 27, 27;
+    --shadow-1: 0 1px 4px rgba(0,0,0,0.06);
+    --shadow-2: 0 8px 32px rgba(0,0,0,0.10);
+    --shadow-3: 0 12px 40px rgba(153,27,27,0.30);
+    --font-display: 'Grade', sans-serif;
+    --font-serif:   'DM Serif Display', serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 50;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 9999px; }
+}
+
+@layer utilities {
+  .text-fluid-hero    { font-size: clamp(3.25rem, 6vw + 1rem, 6.5rem); }
+  .text-fluid-section { font-size: clamp(2.25rem, 3.5vw + 0.5rem, 4rem); }
+  .text-fluid-body    { font-size: clamp(1rem, 0.4vw + 0.875rem, 1.125rem); }
+  .text-fluid-sub     { font-size: clamp(0.875rem, 0.3vw + 0.75rem, 1rem); }
+  .font-display { font-family: var(--font-display); }
+  .font-serif   { font-family: var(--font-serif); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Footer responsive grid */
+@media (min-width: 640px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (min-width: 1024px) {
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr !important; }
+}
+
+/* Location section responsive */
+@media (max-width: 767px) {
+  .location-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+/* Footer contact grid responsive */
+@media (max-width: 767px) {
+  .footer-contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
