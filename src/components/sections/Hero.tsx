@@ -30,46 +30,75 @@ export function Hero({ onOpenModal }: HeroProps) {
       id="hero"
       aria-labelledby="hero-h1"
       className="relative min-h-svh flex items-center overflow-hidden"
-      style={{ background: '#000000' }}
+      style={{ position: 'relative', overflow: 'hidden' }}
     >
-      <div
-        className="mx-auto w-full px-6 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-32 lg:py-0"
-        style={{ maxWidth: '1400px' }}
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+          opacity: 0.3,
+          filter: 'grayscale(100%)',
+        }}
       >
+        <source src="/video/video 1.MOV" type="video/mp4" />
+      </video>
 
-      {/* Left column */}
-      <div className="relative z-10 flex flex-col justify-center max-w-xl">
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        zIndex: 1,
+      }} />
+
+      <div
+        className="w-full px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center text-center"
+        style={{ position: 'relative', zIndex: 2, minHeight: '100vh' }}
+      >
         <div
           ref={badgeRef}
           className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] mb-6"
-          style={{ color: 'var(--color-accent)', opacity: 0 }}
+          style={{ color: 'white', opacity: 0 }}
         >
           <span className="block h-px w-10 bg-current opacity-40" />
           Grand Opening · Deerfield Beach, FL
+          <span className="block h-px w-10 bg-current opacity-40" />
         </div>
 
         <h1
           ref={h1Ref}
           id="hero-h1"
-          className="font-display text-fluid-hero text-white mb-5"
-          style={{ fontSize: 'clamp(2.44rem, 4.5vw + 0.75rem, 4.875rem)', lineHeight: 0.93, letterSpacing: '-0.02em', opacity: 0 }}
+          className="font-display text-white mb-5 w-full"
+          style={{ fontSize: 'clamp(60px, 9vw, 130px)', fontWeight: 700, lineHeight: 0.93, letterSpacing: '-0.02em', opacity: 0 }}
         >
-          Hunters<br />
-          <em className="font-display not-italic" style={{ color: 'var(--color-accent)' }}>Jiu-Jitsu</em><br />
-          Coming Soon.
+          <span style={{ display: 'block', whiteSpace: 'nowrap' }}>
+            <span style={{ color: 'white' }}>Hunters </span><em className="font-display not-italic" style={{ color: 'var(--color-accent)' }}>Jiu-Jitsu</em>
+          </span>
+          <span style={{ display: 'block', whiteSpace: 'nowrap', color: 'white' }}>Coming Soon.</span>
         </h1>
 
         <p
           ref={subRef}
-          className="text-fluid-sub max-w-[30rem] mb-8"
-          style={{ color: 'rgba(255,255,255,0.70)', lineHeight: 1.8, opacity: 0 }}
+          style={{ color: 'rgba(255,255,255,0.70)', lineHeight: 1.8, opacity: 0, maxWidth: '600px', margin: '0 auto 2rem', fontSize: '16px' }}
         >
           Have you ever trained martial arts before? No matter your answer, your place is here.{' '}
           Our motto is <strong className="text-white font-semibold">"Expert guidance for beginners"</strong>—and
           you can be one of the first to join with a special founding offer.
         </p>
 
-        <div ref={ctaRef} className="flex flex-col sm:flex-row items-start sm:items-center gap-4" style={{ opacity: 0 }}>
+        <div ref={ctaRef} className="flex flex-row items-center justify-center" style={{ gap: '16px', opacity: 0 }}>
           <Button size="lg" onClick={onOpenModal}>
             Claim Our Grand Opening Offer →
           </Button>
@@ -78,52 +107,6 @@ export function Hero({ onOpenModal }: HeroProps) {
         <p className="mt-4 text-[13px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
           Founding spots are limited. Price increases after opening day.
         </p>
-      </div>
-
-      {/* Right column — decorative card */}
-      <div className="hidden lg:flex items-center justify-center" aria-hidden="true">
-        <div
-          style={{
-            width: '340px',
-            aspectRatio: '9/16',
-            borderRadius: '20px',
-            overflow: 'hidden',
-            boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
-            transform: 'rotate(1.5deg)',
-            background: 'linear-gradient(135deg, #1a0a0a 0%, #2d1515 50%, #1a0a0a 100%)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            position: 'relative',
-          }}
-        >
-          {/* Dot pattern */}
-          <div
-            style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: 'radial-gradient(circle, rgba(153,27,27,0.25) 1px, transparent 1px)',
-              backgroundSize: '28px 28px',
-            }}
-          />
-          {/* Logo + text */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center', gap: '20px',
-          }}>
-            <img
-              src="/imagem/logo-02.jpg"
-              alt="Hunters Academy"
-              style={{ width: 200, height: 'auto', objectFit: 'contain' }}
-            />
-            <span style={{
-              fontSize: '12px', color: 'rgba(255,255,255,0.30)',
-              letterSpacing: '0.12em', textTransform: 'uppercase',
-            }}>
-              Deerfield Beach · FL
-            </span>
-          </div>
-        </div>
-      </div>
-
       </div>
     </section>
   )

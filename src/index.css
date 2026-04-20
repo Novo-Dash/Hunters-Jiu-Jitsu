@@ -11,6 +11,12 @@
 
 @import "tailwindcss";
 
+@keyframes bgDrift {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 5% 5%; }
+  100% { background-position: 0% 0%; }
+}
+
 @layer base {
   :root {
     --color-bg:             #fafaf9;
