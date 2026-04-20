@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -o \"C:/Users/pc/Downloads/hunters-academy.zip\")",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(unzip -o \"grade-sports-font-2026-04-07-06-21-55-utc.zip\")",
+      "Bash(mkdir -p \"C:/Users/pc/OneDrive/Área de Trabalho/Gestão de Design/4 ABR/NOVODASH/LP  Hunters Academy/hunters-academy/public/fonts\")",
+      "Bash(cp \"C:/Users/pc/OneDrive/Área de Trabalho/Gestão de Design/4 ABR/NOVODASH/LP  Hunters Academy/public/fonte/Grade/Grade.woff2\" \"C:/Users/pc/OneDrive/Área de Trabalho/Gestão de Design/4 ABR/NOVODASH/LP  Hunters Academy/hunters-academy/public/fonts/\")",
+      "Bash(cp \"C:/Users/pc/OneDrive/Área de Trabalho/Gestão de Design/4 ABR/NOVODASH/LP  Hunters Academy/public/fonte/Grade/Grade.woff\" \"C:/Users/pc/OneDrive/Área de Trabalho/Gestão de Design/4 ABR/NOVODASH/LP  Hunters Academy/hunters-academy/public/fonts/\")",
+      "Bash(grep -n \"background\" \"/c/Users/pc/OneDrive/Área de Trabalho/Gestão de Design/4 ABR/NOVODASH/LP  Hunters Academy/hunters-academy/src/components/sections\"/*.tsx)",
+      "Bash(claude:*)"
+    ]
+  }
+}
