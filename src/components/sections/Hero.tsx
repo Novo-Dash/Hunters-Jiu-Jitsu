@@ -80,7 +80,7 @@ export function Hero({ onOpenModal }: HeroProps) {
         <h1
           ref={h1Ref}
           id="hero-h1"
-          className="font-display text-white mb-5 w-full"
+          className="font-display text-white mb-5 w-full hero-h1"
           style={{ fontSize: 'clamp(60px, 9vw, 130px)', fontWeight: 700, lineHeight: 0.93, letterSpacing: '-0.02em', opacity: 0 }}
         >
           <span style={{ display: 'block', whiteSpace: 'nowrap' }}>

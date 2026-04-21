@@ -3,11 +3,6 @@ import { programs } from '@/data/programs'
 
 interface ProgramsProps { onOpenModal: () => void }
 
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14" style={{ flexShrink: 0 }}>
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-)
 
 export function Programs({ onOpenModal }: ProgramsProps) {
   return (
@@ -78,26 +73,11 @@ export function Programs({ onOpenModal }: ProgramsProps) {
                 {p.description}
               </p>
 
-              {/* Topics */}
-              <div style={{ marginBottom: '20px' }}>
-                <p style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-text-muted)', marginBottom: '8px' }}>
-                  What You'll Learn
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  {p.topics.map(t => (
-                    <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <CheckIcon />
-                      <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>{t}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               {/* Divider */}
               <div style={{ borderTop: '1px solid var(--color-border)', marginBottom: '16px' }} />
 
               {/* CTA */}
-              <Button variant="primary" size="md" className="w-full" onClick={onOpenModal}>
+              <Button variant="primary" size="md" className="w-full program-cta-btn" onClick={onOpenModal}>
                 Claim the Grand Opening Offer
               </Button>
 

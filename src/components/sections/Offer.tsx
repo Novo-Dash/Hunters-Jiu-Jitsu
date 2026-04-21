@@ -10,7 +10,7 @@ export function Offer({ onOpenModal }: OfferProps) {
   return (
     <Section id="offer" style={{ background: 'var(--color-accent-subtle)' }}>
       <div
-        className="max-w-xl mx-auto rounded-[24px] p-8 md:p-10 text-center"
+        className="max-w-xl mx-auto rounded-[24px] p-8 md:p-10 text-center offer-card"
         style={{
           background: 'var(--color-surface)',
           border: '1px solid var(--color-border)',
@@ -30,7 +30,7 @@ export function Offer({ onOpenModal }: OfferProps) {
         </p>
 
         {/* Spots avatars */}
-        <div className="flex items-center justify-center gap-3 mb-5">
+        <div className="flex items-center justify-center gap-3 mb-5 offer-spots-row">
           <div className="flex">
             {Array.from({ length: 5 }).map((_, i) => (
               <div

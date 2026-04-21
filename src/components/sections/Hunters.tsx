@@ -70,27 +70,24 @@ export function Hunters({ onOpenModal }: HuntersProps) {
 
           {/* Small gallery */}
           <div className="grid grid-cols-2 gap-3" style={{ marginTop: 24 }}>
-            {(['// 01', '// 02'] as const).map((label, i) => (
+            {([
+              { label: '// 01', src: '/imagem/foto%207.png', alt: 'Hunters Academy foto 01' },
+              { label: '// 02', src: '/imagem/foto%208.png', alt: 'Hunters Academy foto 02' },
+            ] as const).map(({ label, src, alt }, i) => (
               <div
                 key={i}
                 className="relative rounded-[12px] overflow-hidden"
-                style={{
-                  aspectRatio: '4/3',
-                  background: 'linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%)',
-                }}
+                style={{ aspectRatio: '4/3' }}
               >
-                <span style={{
-                  position: 'absolute', top: '50%', left: '50%',
-                  transform: 'translate(-50%,-50%)',
-                  color: 'rgba(0,0,0,0.35)', fontSize: 11, fontWeight: 600,
-                  letterSpacing: '0.08em', textTransform: 'uppercase', whiteSpace: 'nowrap',
-                }}>
-                  Foto · 320 × 240px
-                </span>
+                <img
+                  src={src}
+                  alt={alt}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
                 <span style={{
                   position: 'absolute', bottom: 10, left: 12,
                   fontSize: 11, fontWeight: 700,
-                  color: 'rgba(0,0,0,0.4)', letterSpacing: '0.1em',
+                  color: 'rgba(255,255,255,0.85)', letterSpacing: '0.1em',
                 }}>
                   {label}
                 </span>
@@ -104,7 +101,7 @@ export function Hunters({ onOpenModal }: HuntersProps) {
 
           {/* Main photo */}
           <div
-            className="relative rounded-[16px] overflow-hidden w-full aspect-[4/3] lg:aspect-[4/5]"
+            className="relative rounded-[16px] overflow-hidden w-full aspect-[4/3] lg:aspect-[4/5] hunters-main-photo"
             style={{ background: 'linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%)' }}
           >
             <img src="/about-main.jpg" alt="Hunters Academy" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />

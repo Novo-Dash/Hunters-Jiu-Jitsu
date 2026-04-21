@@ -99,3 +99,23 @@
 @media (max-width: 767px) {
   .footer-contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
 }
+
+/* ─── Mobile-only adjustments (max 768px) ─────────────────────────── */
+@media (max-width: 768px) {
+  /* 1. Hero — título não corta na borda */
+  .hero-h1 { font-size: 2.2rem !important; }
+  .hero-h1 span { white-space: normal !important; }
+
+  /* 2. Offer — card com padding menor + linha de avatars empilhada */
+  .offer-card { padding: 1.25rem !important; }
+  .offer-spots-row { flex-direction: column; gap: 6px; }
+
+  /* 3. Hunters — foto principal limitada a 250px */
+  .hunters-main-photo { aspect-ratio: unset !important; height: 250px !important; }
+
+  /* 4. Programs — botão CTA em uma linha */
+  .program-cta-btn { font-size: 0.75rem !important; padding-left: 1rem !important; padding-right: 1rem !important; }
+
+  /* 5. Process — padding lateral reduzido */
+  #process { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+}
