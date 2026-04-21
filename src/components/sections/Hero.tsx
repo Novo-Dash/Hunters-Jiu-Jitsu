@@ -53,15 +53,18 @@ export function Hero({ onOpenModal }: HeroProps) {
         <source src="/video/video 1.MOV" type="video/mp4" />
       </video>
 
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.85)',
-        zIndex: 1,
-      }} />
+      <div
+        className="hero-overlay"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          zIndex: 1,
+        }}
+      />
 
       <div
         className="w-full px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center text-center"
@@ -81,12 +84,12 @@ export function Hero({ onOpenModal }: HeroProps) {
           ref={h1Ref}
           id="hero-h1"
           className="font-display text-white mb-5 w-full"
-          style={{ fontSize: 'clamp(60px, 9vw, 130px)', fontWeight: 700, lineHeight: 0.93, letterSpacing: '-0.02em', opacity: 0 }}
+          style={{ fontSize: 'clamp(32px, 9vw, 130px)', fontWeight: 700, lineHeight: 0.93, letterSpacing: '-0.02em', opacity: 0 }}
         >
-          <span style={{ display: 'block', whiteSpace: 'nowrap' }}>
+          <span style={{ display: 'block' }}>
             <span style={{ color: 'white' }}>Hunters </span><em className="font-display not-italic" style={{ color: 'var(--color-accent)' }}>Jiu-Jitsu</em>
           </span>
-          <span style={{ display: 'block', whiteSpace: 'nowrap', color: 'white' }}>Coming Soon.</span>
+          <span style={{ display: 'block', color: 'white' }}>Coming Soon.</span>
         </h1>
 
         <p

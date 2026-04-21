@@ -37,11 +37,11 @@ function App() {
       </a>
 
       {/* Global layers */}
-      <CountdownBanner />
       <Navbar onOpenModal={open} />
 
       <main id="main">
         <Hero      onOpenModal={open} />
+        <CountdownBanner />
         {/* Coach section — aguardando informações do cliente */}
         <Offer     onOpenModal={open} />
         <Hunters   onOpenModal={open} />
