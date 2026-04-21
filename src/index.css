@@ -40,6 +40,7 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  html { overflow-x: hidden; }
   body {
     font-family: var(--font-body);
     background: var(--color-bg);
@@ -100,10 +101,36 @@
   .footer-contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
 }
 
-/* Hero overlay — lower opacity on mobile */
+/* ── Hero mobile fixes ────────────────────────────────────── */
 @media (max-width: 767px) {
+  /* Overlay opacity lower */
   .hero-overlay {
-    background-color: rgba(0, 0, 0, 0.62) !important;
+    background-color: rgba(0, 0, 0, 0.50) !important;
+  }
+
+  /* Hero min-height usando dvh */
+  #hero {
+    min-height: 100dvh !important;
+  }
+
+  /* Padding-top do conteúdo para não ficar atrás do navbar */
+  .hero-content {
+    padding-top: 72px !important;
+    padding-bottom: 24px !important;
+  }
+
+  /* Fix h1 cortada: line-height e overflow */
+  #hero-h1 {
+    line-height: 1.1 !important;
+    overflow: visible !important;
+    padding-top: 0.1em;
+    padding-bottom: 0.15em;
+    font-size: clamp(28px, 8.5vw, 130px) !important;
+  }
+
+  /* Largura máxima do conteúdo da hero */
+  .hero-content > * {
+    max-width: 100%;
   }
 }
 
@@ -140,13 +167,24 @@
   animation: countdown-pulse 2s ease-in-out infinite;
 }
 
-/* mobile */
+/* mobile — compact single line */
 @media (max-width: 640px) {
-  .countdown-section   { padding: 40px 16px 32px; }
-  .countdown-eyebrow   { margin-bottom: 22px; }
-  .countdown-row       { gap: 5px; margin-bottom: 22px; }
-  .countdown-unit > div { width: clamp(58px, 19vw, 80px); height: clamp(64px, 20vw, 88px); }
-  .countdown-value     { font-size: clamp(30px, 10vw, 52px); }
-  .countdown-label     { font-size: 8px; letter-spacing: 0.12em; }
-  .countdown-sep       { font-size: clamp(28px, 8vw, 44px); padding-top: clamp(10px, 3vw, 14px); }
+  .countdown-section { padding: 10px 16px; }
+
+  /* Esconde layout completo, mostra strip */
+  .countdown-full-content { display: none !important; }
+  .countdown-mobile-strip {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+}
+
+/* Desktop — esconde strip, mostra layout completo */
+@media (min-width: 641px) {
+  .countdown-mobile-strip { display: none !important; }
+  .countdown-full-content { display: block; }
 }

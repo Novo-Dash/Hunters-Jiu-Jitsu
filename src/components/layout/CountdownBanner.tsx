@@ -126,18 +126,6 @@ export function CountdownBanner() {
         overflow: 'hidden',
       }}
     >
-      {/* Ambient glow */}
-      <div aria-hidden="true" style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '70%',
-        height: '70%',
-        background: 'radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-
       {/* Top accent line */}
       <div aria-hidden="true" style={{
         position: 'absolute',
@@ -146,76 +134,117 @@ export function CountdownBanner() {
         background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
       }} />
 
-      {/* Label */}
-      <p style={{
-        fontSize: '10px',
-        fontWeight: 700,
-        letterSpacing: '0.22em',
-        color: 'rgba(255,255,255,0.75)',
-        textTransform: 'uppercase',
-        marginBottom: '0',
-      }} className="countdown-eyebrow">
-        ◆&nbsp;&nbsp;Founding Member Pricing Ends In&nbsp;&nbsp;◆
-      </p>
-
-      {/* Clock */}
-      <div
-        style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}
-        className="countdown-row"
-      >
-        <TimeCard value={pad(time.d)} label="Days"    />
-        <Separator />
-        <TimeCard value={pad(time.h)} label="Hours"   />
-        <Separator />
-        <TimeCard value={pad(time.m)} label="Minutes" />
-        <Separator />
-        <TimeCard value={pad(time.s)} label="Seconds" pulse />
+      {/* ── Mobile: single-line compact strip ── */}
+      <div className="countdown-mobile-strip">
+        <span style={{
+          fontSize: '10px',
+          fontWeight: 700,
+          letterSpacing: '0.18em',
+          color: 'rgba(255,255,255,0.70)',
+          textTransform: 'uppercase',
+          whiteSpace: 'nowrap',
+        }}>
+          Founding Pricing:
+        </span>
+        <span style={{
+          fontSize: '13px',
+          fontWeight: 700,
+          color: 'white',
+          letterSpacing: '-0.01em',
+          whiteSpace: 'nowrap',
+        }}>
+          {pad(time.d)}d {pad(time.h)}h {pad(time.m)}m{' '}
+          <span className="countdown-dot">{pad(time.s)}s</span>
+        </span>
+        <span style={{ color: 'rgba(255,255,255,0.40)', fontSize: '10px' }}>·</span>
+        <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)', fontWeight: 500, whiteSpace: 'nowrap' }}>
+          Only <strong style={{ color: 'white' }}>{SPOTS_LEFT}</strong> spots left
+        </span>
       </div>
 
-      {/* Spots bar */}
-      <div className="countdown-spots">
-        {/* Progress bar */}
-        <div style={{
-          width: '100%',
-          maxWidth: '320px',
-          margin: '0 auto',
-          background: 'rgba(0,0,0,0.15)',
-          borderRadius: '999px',
-          overflow: 'hidden',
-        }} className="countdown-bar-wrap">
-          <div style={{
-            width: `${pct}%`,
-            height: '4px',
-            background: 'linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.9))',
-            borderRadius: '999px',
-            transition: 'width 0.6s ease',
-          }} />
+      {/* ── Desktop: full layout ── */}
+      <div className="countdown-full-content">
+        {/* Ambient glow */}
+        <div aria-hidden="true" style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '70%',
+          height: '70%',
+          background: 'radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+
+        {/* Label */}
+        <p style={{
+          fontSize: '10px',
+          fontWeight: 700,
+          letterSpacing: '0.22em',
+          color: 'rgba(255,255,255,0.75)',
+          textTransform: 'uppercase',
+          marginBottom: '0',
+        }} className="countdown-eyebrow">
+          ◆&nbsp;&nbsp;Founding Member Pricing Ends In&nbsp;&nbsp;◆
+        </p>
+
+        {/* Clock */}
+        <div
+          style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}
+          className="countdown-row"
+        >
+          <TimeCard value={pad(time.d)} label="Days"    />
+          <Separator />
+          <TimeCard value={pad(time.h)} label="Hours"   />
+          <Separator />
+          <TimeCard value={pad(time.m)} label="Minutes" />
+          <Separator />
+          <TimeCard value={pad(time.s)} label="Seconds" pulse />
         </div>
 
-        {/* Spots text */}
-        <p style={{
-          fontSize: '13px',
-          color: 'rgba(255,255,255,0.80)',
-          fontWeight: 500,
-          margin: 0,
-        }}>
-          <span
-            style={{
-              display: 'inline-block',
-              width: '7px',
-              height: '7px',
-              borderRadius: '50%',
-              background: 'rgba(255,255,255,0.9)',
-              marginRight: '7px',
-              verticalAlign: 'middle',
-              boxShadow: '0 0 6px rgba(255,255,255,0.5)',
-            }}
-            className="countdown-dot"
-          />
-          Only{' '}
-          <strong style={{ color: 'white', fontWeight: 700 }}>{SPOTS_LEFT} spots</strong>
-          {' '}remaining at this price
-        </p>
+        {/* Spots bar */}
+        <div className="countdown-spots">
+          <div style={{
+            width: '100%',
+            maxWidth: '320px',
+            margin: '0 auto',
+            background: 'rgba(0,0,0,0.15)',
+            borderRadius: '999px',
+            overflow: 'hidden',
+          }} className="countdown-bar-wrap">
+            <div style={{
+              width: `${pct}%`,
+              height: '4px',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.9))',
+              borderRadius: '999px',
+              transition: 'width 0.6s ease',
+            }} />
+          </div>
+
+          <p style={{
+            fontSize: '13px',
+            color: 'rgba(255,255,255,0.80)',
+            fontWeight: 500,
+            margin: 0,
+          }}>
+            <span
+              style={{
+                display: 'inline-block',
+                width: '7px',
+                height: '7px',
+                borderRadius: '50%',
+                background: 'rgba(255,255,255,0.9)',
+                marginRight: '7px',
+                verticalAlign: 'middle',
+                boxShadow: '0 0 6px rgba(255,255,255,0.5)',
+              }}
+              className="countdown-dot"
+            />
+            Only{' '}
+            <strong style={{ color: 'white', fontWeight: 700 }}>{SPOTS_LEFT} spots</strong>
+            {' '}remaining at this price
+          </p>
+        </div>
       </div>
     </section>
   )

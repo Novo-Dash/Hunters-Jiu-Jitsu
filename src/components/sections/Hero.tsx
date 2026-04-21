@@ -67,8 +67,8 @@ export function Hero({ onOpenModal }: HeroProps) {
       />
 
       <div
-        className="w-full px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center text-center"
-        style={{ position: 'relative', zIndex: 2, minHeight: '100vh' }}
+        className="hero-content w-full px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center text-center"
+        style={{ position: 'relative', zIndex: 2, minHeight: '100dvh' }}
       >
         <div
           ref={badgeRef}
