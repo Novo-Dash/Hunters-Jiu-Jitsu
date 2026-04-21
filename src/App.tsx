@@ -57,8 +57,6 @@ function App() {
       {/* Modal */}
       <BookingModal isOpen={isOpen} onClose={close} />
 
-      {/* Sticky CTA — mobile only */}
-      <StickyCTABar onOpenModal={open} />
     </>
   )
 }

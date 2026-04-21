@@ -58,6 +58,8 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 200px 200px;
   }
+  ::selection { background: var(--color-accent); color: #ffffff; }
+  ::-moz-selection { background: var(--color-accent); color: #ffffff; }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 9999px; }
@@ -99,6 +101,30 @@
 /* Footer contact grid responsive */
 @media (max-width: 767px) {
   .footer-contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+  /* Container interno do footer */
+  section:has(.footer-contact-grid) > div {
+    padding: 60px 20px !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Remove padding-right da coluna esquerda em mobile */
+  .footer-contact-grid > div:first-child {
+    padding-right: 0 !important;
+  }
+
+  /* Email longo não vaza */
+  .footer-contact-grid span {
+    word-break: break-all;
+  }
+
+  /* Copyright padding */
+  .copyright > div {
+    padding: 16px 20px !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+  }
 }
 
 /* ── Hero mobile fixes ────────────────────────────────────── */
