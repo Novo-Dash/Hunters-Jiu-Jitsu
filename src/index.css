@@ -40,6 +40,7 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  html { overflow-x: hidden; }
   body {
     font-family: var(--font-body);
     background: var(--color-bg);
@@ -57,6 +58,8 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 200px 200px;
   }
+  ::selection { background: var(--color-accent); color: #ffffff; }
+  ::-moz-selection { background: var(--color-accent); color: #ffffff; }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 9999px; }
@@ -98,24 +101,116 @@
 /* Footer contact grid responsive */
 @media (max-width: 767px) {
   .footer-contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+  /* Container interno do footer */
+  section:has(.footer-contact-grid) > div {
+    padding: 60px 20px !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Remove padding-right da coluna esquerda em mobile */
+  .footer-contact-grid > div:first-child {
+    padding-right: 0 !important;
+  }
+
+  /* Email longo não vaza */
+  .footer-contact-grid span {
+    word-break: break-all;
+  }
+
+  /* Copyright padding */
+  .copyright > div {
+    padding: 16px 20px !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+  }
 }
 
-/* ─── Mobile-only adjustments (max 768px) ─────────────────────────── */
-@media (max-width: 768px) {
-  /* 1. Hero — título não corta na borda */
-  .hero-h1 { font-size: 2.2rem !important; }
-  .hero-h1 span { white-space: normal !important; }
+/* ── Hero mobile fixes ────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Overlay opacity lower */
+  .hero-overlay {
+    background-color: rgba(0, 0, 0, 0.50) !important;
+  }
 
-  /* 2. Offer — card com padding menor + linha de avatars empilhada */
-  .offer-card { padding: 1.25rem !important; }
-  .offer-spots-row { flex-direction: column; gap: 6px; }
+  /* Hero min-height usando dvh */
+  #hero {
+    min-height: 100dvh !important;
+  }
 
-  /* 3. Hunters — foto principal limitada a 250px */
-  .hunters-main-photo { aspect-ratio: unset !important; height: 250px !important; }
+  /* Padding-top do conteúdo para não ficar atrás do navbar */
+  .hero-content {
+    padding-top: 72px !important;
+    padding-bottom: 24px !important;
+  }
 
-  /* 4. Programs — botão CTA em uma linha */
-  .program-cta-btn { font-size: 0.75rem !important; padding-left: 1rem !important; padding-right: 1rem !important; }
+  /* Fix h1 cortada: line-height e overflow */
+  #hero-h1 {
+    line-height: 1.1 !important;
+    overflow: visible !important;
+    padding-top: 0.1em;
+    padding-bottom: 0.15em;
+    font-size: clamp(28px, 8.5vw, 130px) !important;
+  }
 
-  /* 5. Process — padding lateral reduzido */
-  #process { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+  /* Largura máxima do conteúdo da hero */
+  .hero-content > * {
+    max-width: 100%;
+  }
+}
+
+/* ── Countdown Banner ─────────────────────────────────────── */
+@keyframes countdown-pulse {
+  0%, 100% { box-shadow: 0 2px 10px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.22); }
+  50%       { box-shadow: 0 2px 18px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.45); }
+}
+@keyframes countdown-dot-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+@keyframes countdown-flip {
+  0%   { transform: rotateX(0deg); }
+  50%  { transform: rotateX(-90deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+.countdown-section   { padding: 52px 20px 40px; }
+.countdown-eyebrow   { margin-bottom: 28px; }
+.countdown-row       { gap: 10px; margin-bottom: 28px; }
+.countdown-unit      { gap: 10px; }
+.countdown-unit > div { width: 80px; height: 88px; }
+.countdown-value     { font-size: 52px; }
+.countdown-label     { font-size: 9px; }
+.countdown-sep       { font-size: 44px; padding-top: 14px; }
+.countdown-spots     { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.countdown-bar-wrap  { height: 4px !important; }
+.countdown-dot       { animation: countdown-dot-blink 1.5s ease-in-out infinite; }
+.countdown-flip      { animation: countdown-flip 0.35s ease-in-out; }
+
+/* pulse on seconds card */
+.countdown-unit:last-child > div {
+  animation: countdown-pulse 2s ease-in-out infinite;
+}
+
+/* mobile — compact single line */
+@media (max-width: 640px) {
+  .countdown-section { padding: 10px 16px; }
+
+  /* Esconde layout completo, mostra strip */
+  .countdown-full-content { display: none !important; }
+  .countdown-mobile-strip {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+}
+
+/* Desktop — esconde strip, mostra layout completo */
+@media (min-width: 641px) {
+  .countdown-mobile-strip { display: none !important; }
+  .countdown-full-content { display: block; }
 }
